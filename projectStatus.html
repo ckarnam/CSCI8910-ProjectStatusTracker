@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<style>
+div.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body style="background-color: #f2f2f2">
+<div id="navbar">
+
+<button class="tablink" onclick="openPage('Project', this, 'gray')" >Project</button>
+<button class="tablink" onclick="openPage('Team', this, 'gray')">Team</button>
+
+</div>
+
+
+
+<div id="Project" class="tabcontent">
+
+
+	
+	<h1> Project Status </h1>
+
+	<p> Development </p>
+		<div class="container">
+		<div class="skills dev">90%</div>
+		</div>
+
+	<p> Test </p>
+		<div class="container">
+		<div class="skills test">80%</div>
+		</div>
+
+	<p> Deployment </p>
+		<div class="container">
+		<div class="skills deploy">65%</div>
+		</div> 
+
+	
+	
+	<h2>Ticket Status Summary</h2>
+	
+
+	<div class="row">
+		<div class="column">
+			<div class="card devConColor">
+				<h3>Development Status</h3>
+				<h5> Total Tickets : 10 </h5>  
+				<h5> Completed : 9</h5>
+				<h5> In Dev &nbsp;&nbsp; : 1 </h5>
+				
+			</div>
+		</div>
+
+		<div class="column">
+			<div class="card testConColor">
+				<h3>Test Status</h3>
+				<h5> Total Tickets : 10 </h5>  
+				<h5> Completed : 8</h5>
+				<h5> In Progress : 2 </h5>
+			</div>
+		</div>
+  
+		<div class="column">
+			<div class="card deployConColor">
+				<h3>Deployment Status</h3>
+				<h5> Total Tickets : 10 </h5>  
+				<h5> Completed : 6</h5>
+				<h5> In Progress : 4 </h5>
+			</div>
+		</div>
+  
+		<div class="column" >
+		<button class="btn success btnDiv " onclick="barDivFunction()"> Reload Project Status </button>
+		</div>
+	
+	</div>
+	&nbsp;
+	
+</div>
+
+<div id="Team" class="tabcontent">
+
+<h1> Team Members </h1>
+	<div class="row">
+		<div class="leftcolumnTeam">
+			<div class="cardTeamDev">
+			
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Tickets Issued</th>
+					<th>Completed</th>
+				</tr>
+				<tr>
+					<td><button class="buttonDev" onclick="showTicketFunction()">Peter</button></td> 
+					<td>8</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td><button class="buttonDev" onclick="showTicketFunction()">Lois</button></td>
+					<td>10</td>
+					<td>8</td>
+				</tr>
+				<tr>
+					<td><button class="buttonDev" onclick="showTicketFunction()">Joe</button></td>
+					<td>10</td>
+					<td>8</td>
+				</tr>
+				<tr>
+					<td>Clove</td>
+					<td>10</td>
+					<td>8</td>
+					</tr>
+			</table>
+			</div>
+		</div>
+		
+		<div class="rightcolumnTeam">
+			<div class="cardTeam">
+				 <div id="showTickets" class="hidden"> 
+				<h3> Ticket Details </h3>
+				</div>
+			</div>
+			</div>
+		<div class="leftcolumnTeam">
+			<div class="cardTeamTest">
+			
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Tickets Issued</th>
+					<th>Completed</th>
+				</tr>
+				<tr>
+					<td><button class="buttonTest" onclick="showTicketFunction()">Peter</button></td>
+					<td>8</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td><button class="buttonTest" onclick="showTicketFunction()">Lois</button></td>
+					<td>10</td>
+					<td>8</td>
+				</tr>
+				
+			</table>
+			</div>
+		</div>
+		<div class="leftcolumnTeam">
+			<div class="cardTeamDeploy">
+			
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Tickets Issued</th>
+					<th>Completed</th>
+				</tr>
+				<tr>
+					<td><button class="buttonDeploy" onclick="showTicketFunction()">Peter</button></td>
+					<td>8</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td><button class="buttonDeploy" onclick="showTicketFunction()">Lois</button></td>
+					<td>10</td>
+					<td>8</td>
+				</tr>
+				
+			</table>
+			</div>
+		</div>
+		 
+		
+	</div>
+
+	
+	&nbsp;
+</div>
+
+
+
+<script>
+function openPage(pageName,elmnt,color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+/*on click shows ticket summary */
+
+function showTicketFunction() {
+    var x = document.getElementById("showTickets");
+    if (x.style.display === "block") {
+       x.style.display = "none"; 
+    } else {
+        
+		x.style.display = "block";
+    }
+}
+// When the user scrolls the page, execute myFunction 
+window.onscroll = function() {stickyNavFunction()};
+// Get the navbar
+var navbar = document.getElementById("navbar");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+function stickyNavFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>
+
+</body>
+</html>
